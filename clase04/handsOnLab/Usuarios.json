@@ -1,0 +1,4 @@
+[
+  { "nombre": "Esteban", "apellido": "Suarez", "edad": 35, "curso": "JS" },
+  { "nombre": "Luis", "apellido": "Arrazola", "edad": 28, "curso": "BackEnd" }
+]
