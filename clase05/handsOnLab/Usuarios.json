@@ -1,0 +1,16 @@
+[
+  {
+    "nombre": "Juan",
+    "apellido": "Rodriguez",
+    "userName": "jrodriguez",
+    "contrasena": "1b6925f3dc9fa8729300dfeff8e1fdcba3c8245b952bed0b391209e5ffe567bd",
+    "salt": "JeMuyqa/bJNQE1Ii+JjkvTCQ3ltYdnvDb2lGl0MSjbKNN8ewwKstqOoTJysyPjyL8dOou11iDH58jgm+itDpnJN6YeacRETBjbaoTnXybS/dgSbeJzt8Hdasc3y/GOIA3ox6p8ioSws9zNGzcyCOu4zW3z6hcwrgau+Dg+y0aG4="
+  },
+  {
+    "nombre": "Ernesto",
+    "apellido": "Gomez",
+    "userName": "egomez",
+    "contrasena": "60ac6363afe60462b5f3477e11f61241c9b4043efcdace505e0d55d85349424e",
+    "salt": "aE8cogCQHtdOl7axYf0v1XwkqSBl5jJtP1J1YwyF7R2D4x16rEPHswoYU+xFcNWLl/Vs4MqWneJfCE2SLoFGfi67IxODF+2ZbNOyrOyxNm/XtpW6uk+XHOJK529bYtC9CdGUvD74LvlUFnizBtabEgUQdpax6FuZrXeYYgoIW04="
+  }
+]
