@@ -1,0 +1,12 @@
+{{#if users.length}}
+{{#each users}}
+
+<p>Hola {{nombre}} {{apellido}}</p>
+<p>Tu correo es {{correo}} y tu contrasena es {{contrasena}} - Tienes {{edad}} anos de edad</p>
+
+{{/each}}
+
+{{else}}
+<h2>NO HAY USUARIOS REGISTRADOS</h2>
+
+{{/if}}
