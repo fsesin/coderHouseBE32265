@@ -1,0 +1,9 @@
+[
+  { "id": 1, "name": "BackEnd", "description": "Curso de desarrollo backend" },
+  {
+    "id": 2,
+    "name": "FrontEnd",
+    "description": "Curso de desarrollo frontend"
+  },
+  { "id": 3, "name": "JavaScript", "description": "Curso de Javascript" }
+]
