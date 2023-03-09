@@ -1,47 +1,56 @@
 import express from 'express'
 import cookieParser from 'cookie-parser'
-
+import session from 'express-session'
+import FileStore from 'session-file-store'
+import { __dirname } from './utils.js'
+import usersRouter from './routes/users.router.js'
+import './persistencia/dbConfig.js'
+import mongoStore from 'connect-mongo'
+import handlebars from 'express-handlebars'
+import viewsRouter from './routes/views.router.js'
 const app = express()
-const cookieKey = 'SignedCookieKey'
-app.use(cookieParser(cookieKey))
 
-// guardar info en cookies
-app.get('/crearCookie',(req,res)=>{
-    res.cookie('primeraCookie65','mi primera cookie 65'
-    //,{maxAge:5000}
-    )
-    .send('Cookie guardada con exito')
-})
-//guardar info en cookies firmada
-app.get('/crearCookieFirmada',(req,res)=>{
-    res.cookie('segundaCookie65','cookieFirmada',{signed:true,maxAge:10000})
-    .send('Cookie firmada guardada con exito')
-})
-// leer info en cookies
-app.get('/leerCookie',(req,res)=>{
-    console.log(req.cookies);
-    const {primeraCookie65} = req.cookies
-    res.json({cookie:primeraCookie65})
-})
-// leer info cookie Firmada
-app.get('/leerCookieFirmada',(req,res)=>{
-    console.log(req.signedCookies);
-    const {primeraCookie65} = req.cookies
-    const {segundaCookie65} = req.signedCookies
-    res.json({cookie:primeraCookie65,signedCookie:segundaCookie65})
-})
-// eliminar cookie
-app.get('/borrarCookie',(req,res)=>{
-    res.clearCookie('primeraCookie65').send('Cookie eliminada con exito')
-})
+// MIDDLEWARES
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
 
-app.get('/modificarCookie',(req,res)=>{
-    res.cookie('primeraCookie65','modificada').send('Cookie modificada')
-})
+// handlebars
+app.engine('handlebars',handlebars.engine())
+app.set('views',__dirname+'/views')
+app.set('view engine', 'handlebars')
 
 
+// file session
+// const fileStore = FileStore(session)
+// app.use(
+//   session({
+//     secret: 'sessionKey',
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: { maxAge: 50000 },
+//     store: new fileStore({
+//       path: __dirname + '/sessions',
+//     }),
+//   })
+// )
 
-const PORT = 3000
+// mongo session
+app.use(
+    session({
+      secret: 'sessionKey',
+      resave: false,
+      saveUninitialized: true,
+      store: new mongoStore({
+        mongoUrl: 'mongodb+srv://coderhouse:coderhouse@cluster0.sugvijj.mongodb.net/mongoSession65?retryWrites=true&w=majority'
+      }),
+    })
+  )
+
+app.use('/users',usersRouter)
+app.use('/views',viewsRouter)
+
+const PORT = 8080
 app.listen(PORT, () => {
   console.log(`Escuchando al puerto ${PORT}`)
 })
